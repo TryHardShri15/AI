@@ -1,0 +1,18 @@
+-------CONCATENATION-------
+
+conc([], L, L). 
+conc([H|T], L2, [H|R]) :- conc(T, L2, R). 
+
+-------REVERSE-------
+
+reverse([], []). 
+reverse([H|T], R) :- reverse(T, RT), conc(RT, [H], R). 
+
+-------SUM-------
+
+sum(X, Y, R) :- R is X + Y. 
+
+-------MAX-------
+
+max(X, Y, X) :- X >= Y. 
+max(X, Y, Y) :- X < Y.
