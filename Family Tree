@@ -1,0 +1,94 @@
+% ---------- SHORTER CODE WITH FULL VARIETY ----------
+
+% ---------- Family Facts ----------
+parent(john, mary).     % father
+parent(linda, mary).    % mother
+
+parent(mary, alice).    % mother -> grandmother
+parent(mary, bob).      % siblings
+parent(jack, alice).    % father -> grandfather
+
+parent(bob, tom).       % uncle/aunt
+parent(sara, tom).      % cousin's parent
+
+% ---------- Gender Facts ----------
+male(john).    % father
+male(jack).    % grandfather
+male(bob).     % uncle
+male(tom).     % cousin
+
+female(linda). % mother
+female(mary).  % grandmother
+female(alice). % daughter
+female(sara).  % aunt
+
+% ---------- Relationship Rules ----------
+father(X, Y) :- parent(X, Y), male(X).
+mother(X, Y) :- parent(X, Y), female(X).
+
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+grandfather(X, Y) :- grandparent(X, Y), male(X).
+grandmother(X, Y) :- grandparent(X, Y), female(X).
+
+uncle(X, Y) :- parent(Z, Y), sibling(X, Z), male(X).
+aunt(X, Y) :- parent(Z, Y), sibling(X, Z), female(X).
+cousin(X, Y) :- parent(A, X), parent(B, Y), sibling(A, B).
+
+
+
+
+
+
+% ---------- FULL LONG CODE MORE EXAMPLES ----------
+
+% --------- Family Facts ---------- 
+parent(john, mary). 
+parent(john, tom). 
+parent(linda, mary). 
+parent(linda, tom). 
+ 
+parent(mary, alice). 
+parent(mary, bob). 
+parent(jack, alice). 
+parent(jack, bob). 
+ 
+parent(tom, lisa). 
+parent(susan, lisa). 
+ 
+parent(bob, eva). 
+parent(sara, eva). 
+ 
+parent(jenny, susan). 
+parent(george, susan). 
+ 
+% --------- Gender Facts ---------- 
+male(john). 
+male(tom). 
+male(jack). 
+male(bob). 
+male(george). 
+ 
+female(linda). 
+female(mary). 
+female(alice). 
+female(lisa). 
+female(susan). 
+female(jenny). 
+female(sara). 
+female(eva). 
+ 
+% --------- Relationship Rules ---------- 
+ 
+father(X, Y) :- parent(X, Y), male(X). 
+mother(X, Y) :- parent(X, Y), female(X). 
+ 
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y. 
+ 
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y). 
+grandfather(X, Y) :- grandparent(X, Y), male(X). 
+grandmother(X, Y) :- grandparent(X, Y), female(X). 
+uncle(X, Y) :- parent(Z, Y), sibling(X, Z), male(X). 
+aunt(X, Y) :- parent(Z, Y), sibling(X, Z), female(X). 
+cousin(X, Y) :- parent(A, X), parent(B, Y), sibling(A, B).
