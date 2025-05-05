@@ -1,0 +1,16 @@
+-------MAX IN LIST-------
+
+maxlist([X], X). 
+maxlist([H|T], M) :- maxlist(T, M1), (H > M1 -> M = H ; M = M1). 
+
+-------INSERT ELEMENT-------
+
+insert(I, 1, L, [I|L]). 
+insert(I, N, [H|T], [H|R]) :-  
+N > 1, N1 is N - 1, insert(I, N1, T, R). 
+
+-------DELETE-------
+
+delete(1, [_|T], T). 
+delete(N, [H|T], [H|R]) :-  
+N > 1, N1 is N - 1, delete(N1, T, R).
