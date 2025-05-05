@@ -1,0 +1,12 @@
+-------SUM OF LIST-------
+
+sumlist([], 0). 
+sumlist([H|T], S) :- sumlist(T, S1), S is H + S1.
+
+-------ODD-EVEN LENGTH-------
+
+evenlength([]). 
+evenlength([_,_|T]) :- evenlength(T). 
+oddlength([_]). 
+oddlength([_,_|T]) :- oddlength(T).
+
