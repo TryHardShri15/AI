@@ -1,0 +1,17 @@
+-------POWER-------
+
+power(_, 0, 1). 
+power(Num, Pow, Ans) :-  
+    Pow > 0,  
+    P1 is Pow - 1,  
+    power(Num, P1, Ans1),  
+    Ans is Num * Ans1. 
+
+-------MULTIPLICATION-------
+
+multi(X, Y, R) :- R is X * Y.
+
+-------MEMBERSHIP-------
+
+memb(X, [X|_]). 
+memb(X, [_|T]) :- memb(X, T).
